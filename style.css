@@ -1,0 +1,159 @@
+*{
+  box-sizing: border-box; 
+}
+
+body{
+    height: 100%; 
+    background-color: #ffe6f0;
+    margin: 0;
+    font-family: Arial,sans-serif;
+}
+.background{
+
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+}
+.background .stripes {
+  position: absolute;     
+  left: 0; right: 0; top: 0;
+  height: 50vh;          
+  background: repeating-linear-gradient(
+    135deg,
+    rgba(255,105,180,0.12) 0px,
+    rgba(255,105,180,0.12) 10px,
+    rgba(255,255,255,0) 10px,
+    rgba(255,255,255,0) 20px
+  );
+}
+.background .pink {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 50vh;           
+  background: #ffd6e8; 
+}
+body {
+  display: flex;               
+  flex-direction: column;      
+  align-items: center;         
+  justify-content: flex-start;     
+  min-height: 100vh;
+  position: relative;
+  gap: 18px;                   
+}
+.card {
+  position: relative;                  
+  width: 340px;                        
+  max-width: calc(100% - 40px);        
+  border-radius: 16px;                 
+  overflow: visible;  
+  margin-top: 50vh; 
+  transform: translateY(-50%);                 
+  transform-style: preserve-3d;         
+  transition: transform 0.35s cubic-bezier(.2,.8,.2,1), box-shadow 0.25s;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  background: linear-gradient(180deg, #ffffff 0%, #fffafc 100%); 
+   border: 2px solid #ff69b4;
+}
+
+
+.card::before,
+.card::after {
+  content: "";                         
+  position: absolute;
+  inset: 0;                             
+  border-radius: inherit;               
+  z-index: -1;                         
+  background: linear-gradient(180deg, #fff 0%, #fffafc 100%);
+  box-shadow: 0 18px 40px rgba(255,105,180,0.08); 
+  transition: transform 0.35s cubic-bezier(.2,.8,.2,1), opacity 0.25s;
+  border: 2px solid #ff69b4;
+}
+.card::before {
+  transform: translateY(12px) scale(0.985) rotate(-2deg);
+  opacity: 0.95;
+}
+.card::after {
+  transform: translateY(24px) scale(0.97) rotate(2deg);
+  opacity: 0.85;
+}
+.card:hover {
+  transform: translateY(-8px) rotateX(2deg) rotateY(4deg);
+  box-shadow: 0 30px 60px rgba(255,105,180,0.12); 
+}
+.card-header {
+  background: linear-gradient(180deg,#f3f2f3,rgba(249, 115, 171, 0.9)); 
+  color: #fff;                  
+  padding: 18px 20px;          
+  border-top-left-radius: 16px; 
+  border-top-right-radius: 16px;
+  text-align: center;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06) inset;
+}
+.card-body {
+  padding: 22px;
+  background: linear-gradient(180deg, rgba(249, 115, 171, 0.9), rgba(248, 243, 245, 0.9));
+  color: #2b2b2b;              
+  font-size: 16px;
+  line-height: 1.45;
+  min-height: 110px;            
+  display: flex;               
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.card-footer {
+  padding: 10px 14px;
+  font-size: 12px;
+  color: #a22a3a;              
+  text-align: center;
+  background: transparent;
+}
+.controls {
+  display: flex;                /* put buttons in a row */
+  gap: 14px;                    /* space between buttons */
+  align-items: center;
+  justify-content: center;
+  z-index: 2;                   /* ensure controls are above card stacks */
+}
+
+/* base button styling (applies to both #prev and #next) */
+.controls button {
+  -webkit-appearance: none;     /* remove native iOS styles */
+  appearance: none;
+  border: none;                 /* remove default border */
+  padding: 12px 18px;           /* comfortable click area */
+  border-radius: 999px;         /* pill-shaped buttons */
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  background: linear-gradient(180deg,#ff6ea4,#ff4778); /* bright pink gradient */
+  box-shadow: 0 8px 22px rgba(255,105,180,0.22);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+}
+
+/* hover state makes button feel clickable */
+.controls button:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 18px 48px rgba(255,105,180,0.28);
+  filter: brightness(1.03);
+}
+
+/* keyboard focus accessibility (visible focus outline) */
+.controls button:focus {
+  outline: 3px solid rgba(255,105,180,0.18);
+  outline-offset: 4px;
+}
+/* ---------- responsive tweaks for small screens ---------- */
+@media (max-width: 420px) {
+  .card { width: 92%; }         /* keep the card responsive on phones */
+  .card-header { padding: 14px 12px; font-size: 15px; }
+  .card-body { padding: 16px; font-size: 15px; min-height: 90px; }
+  .controls button { padding: 10px 14px; font-size: 16px; }
+}
