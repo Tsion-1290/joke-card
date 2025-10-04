@@ -39,22 +39,24 @@ body {
   align-items: center;         
   justify-content: flex-start;     
   min-height: 100vh;
-  position: relative;
-  gap: 18px;                   
+  gap: 8px;
+                   
 }
 .card {
-  position: relative;                  
+  position: relative;   
+  margin-top: 50vh;               
   width: 340px;                        
   max-width: calc(100% - 40px);        
   border-radius: 16px;                 
   overflow: visible;  
   margin-top: 50vh; 
-  transform: translateY(-50%);                 
+  transform: translateY(-50%)  var(--card-hover, translateY(0));             
   transform-style: preserve-3d;         
   transition: transform 0.35s cubic-bezier(.2,.8,.2,1), box-shadow 0.25s;
   box-shadow: 0 8px 24px rgba(0,0,0,0.08);
   background: linear-gradient(180deg, #ffffff 0%, #fffafc 100%); 
    border: 2px solid #ff69b4;
+     
 }
 
 
@@ -73,14 +75,16 @@ body {
 .card::before {
   transform: translateY(12px) scale(0.985) rotate(-2deg);
   opacity: 0.95;
+    border: 2px solid #ff69b4;
 }
 .card::after {
   transform: translateY(24px) scale(0.97) rotate(2deg);
   opacity: 0.85;
+    border: 2px solid #ff69b4;
 }
 .card:hover {
-  transform: translateY(-8px) rotateX(2deg) rotateY(4deg);
-  box-shadow: 0 30px 60px rgba(255,105,180,0.12); 
+  box-shadow: 0px 60px rgba(255,105,180,0.12); 
+    transform: translateY(-50%) translateY(-6px);
 }
 .card-header {
   background: linear-gradient(180deg,#f3f2f3,rgba(249, 115, 171, 0.9)); 
@@ -115,44 +119,44 @@ body {
   background: transparent;
 }
 .controls {
-  display: flex;                /* put buttons in a row */
-  gap: 14px;                    /* space between buttons */
+  display: flex;              
+  gap: 14px;                 
   align-items: center;
   justify-content: center;
-  z-index: 2;                   /* ensure controls are above card stacks */
+  z-index: 2;                  
 }
 
 
 .controls button {
-  -webkit-appearance: none;     /* remove native iOS styles */
+  -webkit-appearance: none;    
   appearance: none;
-  border: none;                 /* remove default border */
-  padding: 12px 18px;           /* comfortable click area */
-  border-radius: 999px;         /* pill-shaped buttons */
+  border: none;               
+  padding: 12px 18px;          
+  border-radius: 999px;        
   font-size: 18px;
   font-weight: 600;
   color: #fff;
   cursor: pointer;
-  background: linear-gradient(180deg,#ff6ea4,#ff4778); /* bright pink gradient */
+  background: linear-gradient(180deg,#ff6ea4,#ff4778); 
   box-shadow: 0 8px 22px rgba(255,105,180,0.22);
   transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
 }
 
-/* hover state makes button feel clickable */
+
 .controls button:hover {
   transform: translateY(-4px) scale(1.03);
   box-shadow: 0 18px 48px rgba(255,105,180,0.28);
   filter: brightness(1.03);
 }
 
-/* keyboard focus accessibility (visible focus outline) */
+
 .controls button:focus {
   outline: 3px solid rgba(255,105,180,0.18);
   outline-offset: 4px;
 }
-/* ---------- responsive tweaks for small screens ---------- */
+
 @media (max-width: 420px) {
-  .card { width: 92%; }         /* keep the card responsive on phones */
+  .card { width: 92%; }         
   .card-header { padding: 14px 12px; font-size: 15px; }
   .card-body { padding: 16px; font-size: 15px; min-height: 90px; }
   .controls button { padding: 10px 14px; font-size: 16px; }
