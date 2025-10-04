@@ -7,6 +7,7 @@ body{
     background-color: #ffe6f0;
     margin: 0;
     font-family: Arial,sans-serif;
+   
 }
 .background{
 
@@ -56,6 +57,7 @@ body {
   box-shadow: 0 8px 24px rgba(0,0,0,0.08);
   background: linear-gradient(180deg, #ffffff 0%, #fffafc 100%); 
    border: 2px solid #ff69b4;
+
      
 }
 
@@ -123,7 +125,9 @@ body {
   gap: 14px;                 
   align-items: center;
   justify-content: center;
-  z-index: 2;                  
+  z-index: 2;   
+  margin-top: -6px;    
+
 }
 
 
